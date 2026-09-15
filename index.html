@@ -301,7 +301,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(17,17,17,0.
 .product-modal-close{position:absolute;top:16px;right:16px;background:rgba(17,17,17,0.7);backdrop-filter:blur(8px);border:1px solid var(--border);width:40px;height:40px;border-radius:50%;color:var(--white);font-size:20px;cursor:pointer;line-height:1;transition:background 0.2s,color 0.2s,transform 0.2s;display:flex;align-items:center;justify-content:center;z-index:10}
 .product-modal-close:hover{background:var(--yellow);color:var(--black);border-color:var(--yellow);transform:rotate(90deg)}
 .product-modal-header{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0}
-.product-modal-img{background:#fafafa;display:flex;align-items:center;justify-content:center;padding:0;position:relative;min-height:420px;overflow:hidden}
+.product-modal-img{background:var(--graphite);display:flex;align-items:center;justify-content:center;padding:0;position:relative;min-height:420px;overflow:hidden}
 .product-modal-img img{width:100%;height:100%;object-fit:cover}
 .product-modal-img-cssviz{display:flex;align-items:flex-end;gap:8px}
 .product-modal-img-cssviz .bar{width:24px;height:130px;border-radius:4px 4px 0 0}
@@ -335,7 +335,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(17,17,17,0.
 .product-modal-warranty p{font-size:13px;color:var(--gray2);line-height:1.6;margin-bottom:8px}
 .product-modal-warranty p:last-child{margin-bottom:0}
 .product-modal-warranty strong{color:var(--white);font-weight:700}
-.catalog-card-img{background:#fafafa;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:0;position:relative;overflow:hidden}
+.catalog-card-img{background:var(--graphite);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;padding:0;position:relative;overflow:hidden}
 .catalog-card-img img{width:100%;height:100%;object-fit:cover;display:block}
 .catalog-card-img-cssviz{display:flex;align-items:flex-end;gap:6px}
 .catalog-card-img-cssviz .bar{width:14px;height:80px;border-radius:3px 3px 0 0}
@@ -532,7 +532,7 @@ footer{background:var(--graphite);border-top:1px solid var(--border);padding:40p
   .catalog-grid{grid-template-columns:1fr 1fr;gap:14px}
   .catalog-help{grid-template-columns:1fr;text-align:left}
   .product-modal-header{grid-template-columns:1fr}
-  .product-modal-img{min-height:280px;padding:24px}
+  .product-modal-img{min-height:280px;padding:0}
   .product-modal-info{padding:28px 24px 20px}
   .product-modal-title{font-size:32px}
   .product-modal-price{font-size:38px}
@@ -563,6 +563,15 @@ footer{background:var(--graphite);border-top:1px solid var(--border);padding:40p
   .bottom-cta h2{font-size:28px}
   .stats-inner{grid-template-columns:1fr 1fr}
 }
+
+.product-gallery{position:relative;touch-action:pan-y}
+.product-gallery img{object-fit:cover;width:100%;height:100%;display:block}
+.product-modal-img.product-gallery img{position:absolute;inset:0}
+.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border:1px solid #ddd;border-radius:50%;background:rgba(255,255,255,.94);color:#171717;font-size:28px;cursor:pointer;z-index:2;display:grid;place-items:center;padding:0;line-height:1}
+.gallery-arrow:hover{background:var(--yellow)}
+.gallery-arrow:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.gallery-prev{left:10px}.gallery-next{right:10px}
+.gallery-count{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.72);color:white;border-radius:20px;padding:4px 10px;font-size:12px;pointer-events:none}
 </style>
 </head>
 <body>
@@ -584,8 +593,8 @@ footer{background:var(--graphite);border-top:1px solid var(--border);padding:40p
         <button class="lang-btn" data-lang="kz" onclick="setLang('kz')">ҚАЗ</button>
         <button class="lang-btn" data-lang="en" onclick="setLang('en')">ENG</button>
       </div>
-      <a href="tel:+77072208888" class="phone-link">+7 707 220-88-88</a>
-      <a href="https://wa.me/77072208888" class="btn-wa-nav">WhatsApp</a>
+      <a href="tel:+77774127565" class="phone-link">+7 777 412 75 65</a>
+      <a href="https://wa.me/77774127565" class="btn-wa-nav">WhatsApp</a>
     </div>
   </div>
 </nav>
@@ -602,7 +611,7 @@ footer{background:var(--graphite);border-top:1px solid var(--border);padding:40p
           <p class="hero-sub" data-i18n="hero.sub">Продажа, доставка и установка парковочных блокираторов по Алматы. Монтаж в течение 24 часов. Гарантия до 5 лет.</p>
           <div class="hero-actions">
             <button class="btn-primary" onclick="openQuoteModal()" data-i18n="hero.cta1">Получить консультацию</button>
-            <a class="btn-wa-hero" href="https://wa.me/77072208888" target="_blank">
+            <a class="btn-wa-hero" href="https://wa.me/77774127565" target="_blank">
               <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
               <span data-i18n="hero.cta2">Написать в WhatsApp</span>
             </a>
@@ -644,7 +653,7 @@ footer{background:var(--graphite);border-top:1px solid var(--border);padding:40p
       </div>
       <div class="cat-card" onclick="showSection('catalog',document.querySelectorAll('.nav-link')[1]);setTimeout(()=>showProduct('pl105-11'),300)">
         <div class="cat-thumb" style="background:#fafafa;border-radius:4px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;margin-bottom:16px;overflow:hidden">
-          <img src="pl105.JPG" alt="PL105-11" style=width:100%;height:100%;object-fit:cover>
+          <img src="pl105f.JPG" alt="PL105-11" style=width:100%;height:100%;object-fit:cover>
         </div>
         <div class="cat-name" data-i18n="cat.2.name">Ручные парковочные шлагбаумы</div>
         <div class="cat-desc" data-i18n="cat.2.desc">Серия PL105 — складная стальная конструкция без электроники. Гарантия 5 лет.</div>
@@ -904,7 +913,7 @@ footer{background:var(--graphite);border-top:1px solid var(--border);padding:40p
         <p data-i18n="cta.desc">Оставьте заявку или напишите в WhatsApp — ответим в течение 15 минут, подберём модель и подготовим расчёт под ваш объект.</p>
         <div class="bottom-cta-actions">
           <button class="btn-cta-dark" onclick="openQuoteModal()" data-i18n="cta.btn1">Получить консультацию</button>
-          <a class="btn-cta-outline" href="https://wa.me/77072208888" target="_blank">
+          <a class="btn-cta-outline" href="https://wa.me/77774127565" target="_blank">
             <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
             <span data-i18n="cta.btn2">Написать в WhatsApp</span>
           </a>
@@ -1067,7 +1076,7 @@ footer{background:var(--graphite);border-top:1px solid var(--border);padding:40p
       <!-- PL105-13 Механический Усиленный -->
       <div class="catalog-card" data-cat="manual" onclick="showProduct('pl105-13')">
         <div class="catalog-card-img">
-        <img src="pl105-13.jpg" alt="Ручной парковочный шлагбаум PL105-13">
+        <img src="pl105-13.JPG" alt="Ручной парковочный шлагбаум PL105-13">
           <div class="catalog-card-tag-corner">Усиленный</div>
         </div>
         <div class="catalog-card-body">
@@ -1099,7 +1108,7 @@ footer{background:var(--graphite);border-top:1px solid var(--border);padding:40p
       <!-- PL105-11 Бюджетный -->
       <div class="catalog-card" data-cat="manual" onclick="showProduct('pl105-11')">
         <div class="catalog-card-img">
-          <img src="pl105-11.jpg" alt="PL105-11 Бюджетный">
+          <img src="pl105-11.JPG" alt="PL105-11 Бюджетный">
           
         </div>
         <div class="catalog-card-body">
@@ -1302,7 +1311,7 @@ footer{background:var(--graphite);border-top:1px solid var(--border);padding:40p
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:800;color:var(--yellow);line-height:1">−15%</div>
         <div style="font-size:13px;color:var(--gray2);margin-top:4px;font-weight:500" data-i18n="disc.15.lbl">от 11 единиц</div>
       </div>
-      <a href="tel:+77072208888" style="background:var(--graphite);border:1px solid var(--border);border-radius:6px;padding:20px;text-decoration:none;display:block;transition:border-color 0.25s var(--ease),background 0.25s var(--ease),transform 0.25s var(--ease)" onmouseover="this.style.borderColor='var(--yellow)';this.style.background='rgba(255,193,7,0.06)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--graphite)';this.style.transform='translateY(0)'">
+      <a href="tel:+77774127565" style="background:var(--graphite);border:1px solid var(--border);border-radius:6px;padding:20px;text-decoration:none;display:block;transition:border-color 0.25s var(--ease),background 0.25s var(--ease),transform 0.25s var(--ease)" onmouseover="this.style.borderColor='var(--yellow)';this.style.background='rgba(255,193,7,0.06)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.background='var(--graphite)';this.style.transform='translateY(0)'">
         <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:var(--yellow);line-height:1.05;display:flex;align-items:center;gap:8px">
           <svg viewBox="0 0 24 24" style="width:24px;height:24px;fill:var(--yellow);flex-shrink:0"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
           <span data-i18n="disc.call.title">По звонку</span>
@@ -1458,7 +1467,7 @@ footer{background:var(--graphite);border-top:1px solid var(--border);padding:40p
     <div class="contacts-grid">
       <div class="contact-block">
         <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;margin-bottom:20px">Напишите или позвоните</h2>
-        <a class="contact-btn" href="https://wa.me/77072208888">
+        <a class="contact-btn" href="https://wa.me/77774127565">
           <div class="contact-btn-icon wa"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></div>
           <div class="contact-btn-text"><strong>WhatsApp</strong><span>Напишите прямо сейчас — отвечаем за 10 минут</span></div>
         </a>
@@ -1466,9 +1475,9 @@ footer{background:var(--graphite);border-top:1px solid var(--border);padding:40p
           <div class="contact-btn-icon tg"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></div>
           <div class="contact-btn-text"><strong>Telegram</strong><span>@urbanlock_kz — удобно для документов и фото</span></div>
         </a>
-        <a class="contact-btn" href="tel:+77774127555">
+        <a class="contact-btn" href="tel:+77774127565">
           <div class="contact-btn-icon ph"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
-          <div class="contact-btn-text"><strong>+7 777 412 75 55</strong><span>Позвоните — ответим в течение 15 минут</span></div>
+          <div class="contact-btn-text"><strong>+7 777 412 75 65</strong><span>Позвоните — ответим в течение 15 минут</span></div>
         </a>
 
         <div class="contact-info-cards">
@@ -1613,7 +1622,7 @@ footer{background:var(--graphite);border-top:1px solid var(--border);padding:40p
 <!-- STICKY WA -->
 <div class="sticky-wa">
   <div class="sticky-wa-tooltip" data-i18n="pmodal.wa">Написать в WhatsApp</div>
-  <a class="sticky-wa-btn" href="https://wa.me/77072208888" target="_blank">
+  <a class="sticky-wa-btn" href="https://wa.me/77774127565" target="_blank">
     <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   </a>
 </div>
@@ -1647,8 +1656,8 @@ footer{background:var(--graphite);border-top:1px solid var(--border);padding:40p
       <div class="footer-col">
         <h4>Контакты</h4>
         <div class="footer-links">
-          <a href="tel:+77072208888">+7 707 220-88-88</a>
-          <a href="https://wa.me/77072208888">WhatsApp</a>
+          <a href="tel:+77774127565">+7 777 412 75 65</a>
+          <a href="https://wa.me/77774127565">WhatsApp</a>
           <a href="https://t.me/urbanlock_kz">Telegram</a>
           <a>Алматы, ул. Желтоксан, 115</a>
         </div>
@@ -2201,6 +2210,7 @@ const PRODUCTS = {
     model: 'PL101-1 · Автоматический',
     title: 'Автоматический парковочный замок PL101-1',
     image: 'PL 101.JPG',
+    images: ['PL 101.JPG', 'pl101full.JPG'],
     desc: 'Работает от батареек — без проводки и подключения к электросети. Дистанционное управление пультом, нагрузка до 2000 кг.',
     fullDesc: '<p>Автоматический парковочный блокиратор <strong>PL101-1</strong> предназначен для ограничения доступа к парковочному месту. Управление осуществляется с помощью дистанционного пульта, позволяющего быстро поднимать и опускать блокирующую дугу.</p><p>Корпус изготовлен из стали с антикоррозийным покрытием и рассчитан на эксплуатацию в условиях дождя, снега, пыли и перепадов температур.</p><h4>Особенности:</h4><ul class="product-feature-list"><li>Дистанционное управление</li><li>Электромеханический привод</li><li>Прочный стальной корпус</li><li>Антикоррозийное покрытие</li><li>Устойчивость к атмосферным воздействиям</li><li>Монтаж на асфальт или бетон</li><li>Подходит для частных и коммерческих парковок</li></ul><p>PL101-1 обеспечивает надёжную защиту парковочного места от несанкционированной парковки.</p>',
     tags: ['Пульт ДУ', 'Питание AA', '2000 кг', 'CE'],
@@ -2245,7 +2255,8 @@ const PRODUCTS = {
   'pl105-16': {
     model: 'PL105-16 · Ручной замок',
     title: 'Ручной парковочный замок PL105-16',
-    image: null,
+    image: 'pl105-16.JPG',
+    images: ['pl105-16.JPG', 'pl105-16full.JPG'],
     imgViz: 'manual-lock',
     desc: 'Ручное управление без электроники. Никаких батареек, никакого обслуживания — только сталь и механика. Гарантия 5 лет.',
     fullDesc: '<p><strong>PL105-16</strong> — надёжный механический парковочный блокиратор для защиты личного парковочного места. Благодаря складной конструкции не занимает много места и прост в ежедневном использовании.</p><p>PL105-16 не требует подключения к электросети, зарядки аккумуляторов или дополнительного обслуживания. Изготовлен из прочной стали и рассчитан на длительную эксплуатацию в любых погодных условиях.</p><h4>Преимущества:</h4><ul class="product-feature-list"><li>Складная механическая конструкция</li><li>Не требует питания и электроники</li><li>Замковый механизм для защиты от посторонних</li><li>Усиленный стальной корпус</li><li>Защита от коррозии и влаги</li><li>Подходит для дворов, ЖК, офисов и предприятий</li><li>Быстрый монтаж на асфальт или бетон</li></ul><p>Простое и эффективное решение для резервирования парковочного места.</p>',
@@ -2268,6 +2279,7 @@ const PRODUCTS = {
     model: 'PL105-10 · Ручной шлагбаум',
     title: 'Ручной парковочный шлагбаум PL105-10',
     image: 'pl105-10.JPG',
+    images: ['pl105-10.JPG', 'pl105-10full.JPG'],
     imgViz: 'u-shape',
     desc: 'П-образный ручной парковочный шлагбаум. Прочная стальная конструкция, складная механика, замковый механизм для защиты от посторонних.',
     fullDesc: '<p><strong>PL105-10</strong> — ручной парковочный шлагбаум П-образной конструкции. Используется для резервирования и защиты индивидуального парковочного места во дворах, ЖК, на коммерческих и частных территориях.</p><p>Изготовлен из прочной стали с антикоррозийным покрытием. Не требует электричества и обслуживания — простое и надёжное решение.</p>',
@@ -2291,6 +2303,7 @@ const PRODUCTS = {
     model: 'PL105-13 · Ручной шлагбаум',
     title: 'Ручной парковочный шлагбаум PL105-13',
     image: 'pl105-13.JPG',
+    images: ['pl105-13.JPG', 'pl105-13full.JPG'],
     imgViz: 'u-shape-wide',
     desc: 'Широкий П-образный ручной парковочный шлагбаум. Утолщённая сталь, антивандальный замок. Для коммерческих объектов с активным трафиком.',
     fullDesc: '<p><strong>PL105-13</strong> — широкий П-образный ручной парковочный шлагбаум, усиленная версия. Утолщённая сталь и антивандальный замковый механизм обеспечивают повышенную защиту парковочного места.</p><p>Рекомендуется для коммерческих объектов, мест с активным трафиком и территорий с риском попыток взлома.</p>',
@@ -2312,6 +2325,7 @@ const PRODUCTS = {
     model: 'PL105-11 · Ручной шлагбаум',
     title: 'Ручной парковочный шлагбаум PL105-11',
     image: 'pl105-11.JPG',
+    images: ['pl105-11.JPG', 'pl105-11full.JPG'],
     desc: 'Треугольный складной ручной парковочный шлагбаум. Самое доступное решение для базовой защиты парковочного места.',
     fullDesc: '<p><strong>PL105-11</strong> — треугольный складной ручной парковочный шлагбаум. Базовая модель для частных дворов и личных парковочных мест по доступной цене.</p><p>Складная конструкция, замковый механизм, светоотражающие полосы в комплекте. Не требует обслуживания и электричества.</p>',
     tags: ['Треугольный', 'Складной', 'Доступная цена'],
@@ -2547,7 +2561,7 @@ function showProduct(id) {
   // Image or CSS viz
   const imgWrap = document.getElementById('pm-img-wrap');
   if (p.image) {
-    imgWrap.innerHTML = '<img id="pm-img" src="' + p.image + '" alt="' + pField(p, id, "title") + '">';
+    renderProductGallery(imgWrap, p, pField(p, id, 'title'));
   } else if (p.imgViz === 'u-shape') {
     imgWrap.innerHTML = '<svg viewBox="0 0 240 200" style="width:80%;max-width:280px"><rect x="50" y="30" width="22" height="140" fill="#FFC107" rx="3"/><rect x="168" y="30" width="22" height="140" fill="#FFC107" rx="3"/><rect x="50" y="30" width="140" height="22" fill="#FFC107" rx="3"/><circle cx="120" cy="100" r="16" fill="none" stroke="#FFC107" stroke-width="4"/><rect x="20" y="178" width="200" height="6" fill="#666" rx="2"/></svg>';
   } else if (p.imgViz === 'u-shape-wide') {
@@ -2619,7 +2633,7 @@ function showProduct(id) {
     closeProductModal();
     orderProduct(pField(p, id, 'model'));
   };
-  document.getElementById('pm-btn-wa').href = 'https://wa.me/77072208888?text=' + encodeURIComponent(t('wa.product') + ' ' + pField(p, id, 'model') + ' (' + pField(p, id, 'title') + '). ' + (CURRENT_LANG === 'kz' ? 'Менімен байланысыңыз.' : CURRENT_LANG === 'en' ? 'Please contact me.' : 'Свяжитесь со мной.'));
+  document.getElementById('pm-btn-wa').href = 'https://wa.me/77774127565?text=' + encodeURIComponent(t('wa.product') + ' ' + pField(p, id, 'model') + ' (' + pField(p, id, 'title') + '). ' + (CURRENT_LANG === 'kz' ? 'Менімен байланысыңыз.' : CURRENT_LANG === 'en' ? 'Please contact me.' : 'Свяжитесь со мной.'));
 
   document.getElementById('productModal').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -2653,7 +2667,7 @@ document.getElementById('quoteModal').addEventListener('click', function(e) {
 });
 
 // Owner's WhatsApp number — все заявки уходят сюда
-const OWNER_WA = '77072208888';
+const OWNER_WA = '77774127565';
 
 function sendQuickQuote() {
   // Multilingual labels for WhatsApp message
@@ -2706,6 +2720,59 @@ function sendProjectQuote() {
   const url = 'https://wa.me/' + OWNER_WA + '?text=' + encodeURIComponent(message);
   window.open(url, '_blank');
 }
+
+// Shared gallery for catalog cards and the product detail window.
+function renderProductGallery(wrap, product, title) {
+  const photos = product.images || [product.image];
+  wrap.onclick = null;
+  wrap.ontouchstart = null;
+  wrap.ontouchend = null;
+  if (wrap.id === 'pm-img-wrap') wrap.replaceChildren();
+  wrap.querySelectorAll('img, svg, .gallery-arrow, .gallery-count').forEach(el => el.remove());
+  wrap.classList.add('product-gallery');
+  const img = document.createElement('img');
+  img.alt = title;
+  img.draggable = false;
+  wrap.prepend(img);
+  let index = 0;
+  const count = document.createElement('span');
+  count.className = 'gallery-count';
+  count.setAttribute('aria-live', 'polite');
+  function show(step) {
+    index = (index + step + photos.length) % photos.length;
+    img.src = photos[index];
+    count.textContent = (index + 1) + ' / ' + photos.length;
+  }
+  show(0);
+  if (photos.length < 2) return;
+  wrap.append(count);
+  for (const [step, label, glyph, side] of [[-1, 'Предыдущее фото', '‹', 'prev'], [1, 'Следующее фото', '›', 'next']]) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'gallery-arrow gallery-' + side;
+    button.setAttribute('aria-label', label);
+    button.textContent = glyph;
+    button.onclick = event => { event.stopPropagation(); show(step); };
+    wrap.append(button);
+  }
+  let start = null;
+  let swiped = false;
+  wrap.ontouchstart = event => { start = {x: event.touches[0].clientX, y: event.touches[0].clientY}; swiped = false; };
+  wrap.ontouchend = event => {
+    if (!start) return;
+    const dx = event.changedTouches[0].clientX - start.x;
+    const dy = event.changedTouches[0].clientY - start.y;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { show(dx < 0 ? 1 : -1); swiped = true; }
+    start = null;
+  };
+  wrap.onclick = event => { if (swiped) { event.stopPropagation(); event.preventDefault(); swiped = false; } };
+}
+document.querySelectorAll('.catalog-card').forEach(card => {
+  const match = (card.getAttribute('onclick') || '').match(/showProduct\('([^']+)'\)/);
+  const product = match && PRODUCTS[match[1]];
+  if (product && product.image) renderProductGallery(card.querySelector('.catalog-card-img'), product, product.title);
+});
+
 </script>
 </body>
 </html>
